@@ -19,7 +19,7 @@ def draw():
     screen.draw.text("Score:"+str(score),color="black",topleft=(10,10))
     if game_over:
         screen.fill("pink")
-        screen.draw.text("Final Score:"+ str(score),topleft(10,10),fontsize=60)
+        screen.draw.text("Final Score:"+ str(score), topleft=(10,10),fontsize=60)
 
 def place_coin():
     coin.x = randint(20,(width -20))
@@ -36,16 +36,16 @@ def update():
     elif keyboard.right:
         fox.x = fox.x + 2
     elif keyboard.up:
-        fox.y = fox.y + 2
+        fox.y = fox.y - 2
     elif keyboard.down:
-        fox.y = fox.y - 2       
+        fox.y = fox.y + 2       
 
-coin_collected = fox.colliderect(coin)
+    coin_collected = fox.colliderect(coin)
 
-if coin_collected:
-    score = score +10
-    place_coin()
+    if coin_collected:
+       score = score +10
+       place_coin()
 
-clock.schedule(time_up,7.0)
+clock.schedule(time_up,80.0)
 place_coin()
 pgzrun.go()
