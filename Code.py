@@ -2,8 +2,8 @@ import pgzrun
 import pygame
 from random import randint
 
-WIDTH = 400
-HEIGHT = 400
+width = 400
+height = 400
 score = 0
 game_over = False
 
@@ -16,14 +16,14 @@ def draw():
     screen.fill("green")
     fox.draw()
     coin.draw()
-    screen.draw.text("Score:"+ str(score),color="black",topleft=(10,10))
+    screen.draw.text("Score:"+str(score),color="black",topleft=(10,10))
     if game_over:
         screen.fill("pink")
         screen.draw.text("Final Score:"+ str(score), topleft=(10,10),fontsize=60)
 
 def place_coin():
-    coin.x = randint(20,(WIDTH -20))
-    coin.y = randint(20,(HEIGHT -20))
+    coin.x = randint(20,(width -20))
+    coin.y = randint(20,(height -20))
 
 def time_up():
     global game_over
