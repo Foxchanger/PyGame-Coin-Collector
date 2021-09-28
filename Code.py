@@ -2,8 +2,8 @@ import pgzrun
 import pygame
 from random import randint
 
-width = 400
-height = 400
+WIDTH = 400
+HEIGHT = 400
 score = 0
 game_over = False
 
@@ -16,14 +16,14 @@ def draw():
     screen.fill("green")
     fox.draw()
     coin.draw()
-    screen.draw.text("Score:"+str(score),color="black",topleft=(10,10))
+    screen.draw.text("Score:"+ str(score),color="black",topleft=(10,10))
     if game_over:
         screen.fill("pink")
         screen.draw.text("Final Score:"+ str(score), topleft=(10,10),fontsize=60)
 
 def place_coin():
-    coin.x = randint(20,(width -20))
-    coin.y = randint(20,(height -20))
+    coin.x = randint(20,(WIDTH -20))
+    coin.y = randint(20,(HEIGHT -20))
 
 def time_up():
     global game_over
@@ -32,13 +32,13 @@ def time_up():
 def update():
     global score
     if keyboard.left:
-        fox.x = fox.x - 2
+        fox.x = fox.x - 4
     elif keyboard.right:
-        fox.x = fox.x + 2
+        fox.x = fox.x + 4
     elif keyboard.up:
-        fox.y = fox.y - 2
+        fox.y = fox.y - 4
     elif keyboard.down:
-        fox.y = fox.y + 2       
+        fox.y = fox.y + 4       
 
     coin_collected = fox.colliderect(coin)
 
@@ -46,6 +46,6 @@ def update():
        score = score +10
        place_coin()
 
-clock.schedule(time_up,80.0)
+clock.schedule(time_up,10.0)
 place_coin()
 pgzrun.go()
